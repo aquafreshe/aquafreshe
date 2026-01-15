@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- BASIC SECURITY (Cloudflare handles full CSP) -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#0F172A">
+
+  <title>Aquafreshe | Maji Safi Kenya</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- PERFORMANCE -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0F172A',
+            accent: '#38BDF8'
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- LOTTIE -->
+  <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js" defer></script>
+</head>
+
+<body class="bg-primary text-white font-sans overflow-x-hidden">
+
+<!-- AFRICAN SVG PATTERN -->
+<svg class="fixed inset-0 w-full h-full opacity-[0.03] pointer-events-none">
+  <defs>
+    <pattern id="africaPattern" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L80 40 L40 80 L0 40 Z" fill="none" stroke="#38BDF8" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#africaPattern)" />
+</svg>
+
+<!-- NAV -->
+<nav class="fixed w-full z-50 bg-primary/80 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-accent">Aquafreshe 🇰🇪</h1>
+
+    <div class="flex gap-4 items-center">
+      <button id="langToggle"
+        class="text-sm border border-accent px-3 py-1 rounded-lg hover:bg-accent hover:text-primary transition">
+        SW
+      </button>
+      <a href="mailto:talk@aquafresh.co.ke" class="hover:text-accent transition">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center relative">
+  <img
+    src="https://picsum.photos/1600/900?kenya,water"
+    loading="lazy"
+    class="absolute inset-0 w-full h-full object-cover opacity-20"
+    alt="Kenya Water">
+
+  <div class="relative max-w-7xl mx-auto px-6 pt-32 grid md:grid-cols-2 gap-12 items-center">
+    <div class="space-y-6 animate-fade-in">
+      <h2 id="heroTitle" class="text-5xl font-bold leading-tight">
+        Clean Water.<br><span class="text-accent">Life. Community.</span>
+      </h2>
+
+      <p id="heroText" class="text-white/80 max-w-xl">
+        Secure, hygienic water refill inspired by Kenyan values.
+      </p>
+
+      <div class="flex gap-4">
+        <a href="mailto:talk@aquafresh.co.ke"
+           class="bg-accent text-primary px-6 py-3 rounded-xl font-semibold hover:scale-105 transition">
+          Get Clean Water
+        </a>
+      </div>
+    </div>
+
+    <div id="lottie-water" class="w-full h-80"></div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="py-24 text-center">
+  <h3 id="tipsTitle" class="text-4xl font-bold mb-6">
+    Water & Hygiene <span class="text-accent">Wisdom</span>
+  </h3>
+
+  <div id="tipBox"
+       class="max-w-3xl mx-auto border border-accent rounded-2xl p-8 text-lg">
+    Loading...
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 border-t border-white/10 text-sm">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between">
+    <span>© 2026 Aquafreshe Kenya</span>
+    <span class="opacity-60">Developed by jaydaplug</span>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+
+<style>
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 1s ease-out; }
+</style>
+
+</body>
+</html>
