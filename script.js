@@ -1,4 +1,4 @@
-// Lottie
+// Lottie Animation
 lottie.loadAnimation({
   container: document.getElementById("lottie-water"),
   renderer: "svg",
@@ -11,24 +11,14 @@ lottie.loadAnimation({
 const tips = [
   "Always store drinking water in clean containers.",
   "Boil water if quality is uncertain.",
-  "Keep water containers covered.",
   "Wash hands before handling water.",
-  "Clean jerrycans weekly.",
-  "Safe water protects families.",
-  "Avoid touching water spouts.",
-  "Teach children hygiene early.",
-  "Use treated water for cooking.",
-  "Community hygiene saves lives.",
   "Do not mix old and new water.",
-  "Wash hands after toilet use.",
-  "Keep animals away from water.",
-  "Drink enough water daily.",
-  "Clean refill stations daily.",
-  "Avoid cracked containers.",
-  "Use clean cups to draw water.",
-  "Report unusual water smell.",
-  "Water is life.",
-  "Protect water sources."
+  "Keep water containers covered.",
+  "Community hygiene protects lives.",
+  "Teach children safe water habits.",
+  "Avoid touching water spouts.",
+  "Use treated water for cooking.",
+  "Water is life – protect it."
 ];
 
 const tipBox = document.getElementById("tipBox");
@@ -42,16 +32,39 @@ document.getElementById("langToggle").addEventListener("click", () => {
   sw = !sw;
   document.getElementById("langToggle").textContent = sw ? "EN" : "SW";
   document.getElementById("heroTitle").innerHTML = sw
-    ? "Maji Safi.<br><span class='text-accent'>Uhai. Jamii.</span>"
-    : "Clean Water.<br><span class='text-accent'>Life. Community.</span>";
+    ? "Maji Safi.<br><span style='color:var(--accent)'>Uhai. Jamii.</span>"
+    : "Clean Water.<br><span style='color:var(--accent)'>Life. Community.</span>";
 
   document.getElementById("heroText").textContent = sw
-    ? "Huduma salama ya kujaza maji, kwa jamii za Kenya."
+    ? "Huduma salama ya kujaza maji kwa jamii za Kenya."
     : "Secure, hygienic water refill inspired by Kenyan values.";
+});
 
-  document.getElementById("tipsTitle").innerHTML = sw
-    ? "Maarifa ya <span class='text-accent'>Usafi wa Maji</span>"
-    : "Water & Hygiene <span class='text-accent'>Wisdom</span>";
+// Theme Toggle (Dark / Light / Auto)
+const themeToggle = document.getElementById("themeToggle");
+const root = document.documentElement;
+
+function applyTheme(mode) {
+  root.classList.remove("light");
+  if (mode === "light") root.classList.add("light");
+  if (mode === "auto") {
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      root.classList.add("light");
+    }
+  }
+  localStorage.theme = mode;
+  themeToggle.textContent =
+    mode === "dark" ? "Light" :
+    mode === "light" ? "Auto" :
+    "Dark";
+}
+
+applyTheme(localStorage.theme || "auto");
+
+themeToggle.addEventListener("click", () => {
+  const current = localStorage.theme || "auto";
+  const next = current === "dark" ? "light" : current === "light" ? "auto" : "dark";
+  applyTheme(next);
 });
 
 // Service Worker
